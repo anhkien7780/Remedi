@@ -22,6 +22,11 @@ fun RemediApp(
         composable(route = Screen.SettingScreen.route) {
             SettingScreen(appViewModel = appViewModel, onBack = { navController.popBackStack() })
         }
+        composable(route = Screen.AddMedicineScreen.route) {
+            AddMedicineScreen(
+                onBack = { navController.popBackStack() }
+            )
+        }
     }
 }
 

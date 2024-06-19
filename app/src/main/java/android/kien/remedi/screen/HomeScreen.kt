@@ -244,7 +244,7 @@ fun HomeScreen(
                 modifier = Modifier
                     .padding(innerPadding)
                     .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.background ),
+                    .background(MaterialTheme.colorScheme.background),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
@@ -254,7 +254,7 @@ fun HomeScreen(
                     color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.padding(bottom = 10.dp)
                 )
-                ElevatedButton(onClick = { /*TODO*/ }) {
+                ElevatedButton(onClick = { navController.navigate(Screen.AddMedicineScreen.route) }) {
                     Icon(
                         imageVector = Icons.Default.Add,
                         contentDescription = "Thêm thuốc",

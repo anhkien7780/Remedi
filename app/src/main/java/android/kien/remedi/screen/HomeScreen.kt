@@ -2,6 +2,8 @@ package android.kien.remedi.screen
 
 import android.content.Context
 import android.kien.remedi.R
+import android.kien.remedi.model.Screen
+import android.kien.remedi.ui.theme.RemediTheme
 import android.kien.remedi.ui.theme.lightCustomColorScheme
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -42,7 +44,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -125,7 +126,7 @@ fun HomeScreen(
                         )
                     },
                     onClick = {
-
+                        navController.navigate(route = Screen.SettingScreen.route)
                     },
                     selected = false
                 )
@@ -182,11 +183,6 @@ fun HomeScreen(
                                 color = MaterialTheme.colorScheme.errorContainer,
                                 shape = RoundedCornerShape(10.dp)
                             )
-                            .shadow(
-                                elevation = 2.dp, shape = RoundedCornerShape(10.dp), clip = false,
-                                ambientColor = Color.Black,
-                                spotColor = Color.Gray
-                            )
                     ) {
                         Column(
                             verticalArrangement = Arrangement.Center,
@@ -211,7 +207,9 @@ fun HomeScreen(
     ) {
         Scaffold(
             containerColor = lightCustomColorScheme.surfaceContainerLow,
-            modifier = Modifier.fillMaxSize(), topBar = {
+            modifier = Modifier
+                .fillMaxSize()
+                .background(color = MaterialTheme.colorScheme.background), topBar = {
                 CenterAlignedTopAppBar(
                     colors = TopAppBarDefaults.topAppBarColors(MaterialTheme.colorScheme.primaryContainer),
                     navigationIcon = {
@@ -244,9 +242,9 @@ fun HomeScreen(
             }) { innerPadding ->
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
                     .padding(innerPadding)
-                    .fillMaxSize(),
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.background ),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
@@ -311,7 +309,9 @@ fun DrawerHead(name: String?) {
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen(context = LocalContext.current, navController = rememberNavController())
+    RemediTheme {
+        HomeScreen(context = LocalContext.current, navController = rememberNavController())
+    }
 }
 
 @Preview(showBackground = true)

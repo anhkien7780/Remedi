@@ -15,9 +15,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             val appViewModel: AppViewModel = viewModel()
             RemediTheme(
-                darkTheme = appViewModel.getDarkMode()
+                darkTheme = appViewModel.mode
             ) {
-                RemediApp()
+                RemediApp(appViewModel = appViewModel)
             }
         }
     }

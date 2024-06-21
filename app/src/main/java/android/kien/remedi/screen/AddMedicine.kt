@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.dp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddMedicineScreen(
+    onNavToAddAnnouncementScreen: () -> Unit,
     onBack: () -> Unit
 ) {
     val imageSize = 374.dp
@@ -172,7 +173,7 @@ fun AddMedicineScreen(
                 )
             }
             OutlinedButton(
-                onClick = { /*TODO*/ },
+                onClick = { onNavToAddAnnouncementScreen() },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 10.dp, end = 10.dp)
@@ -213,8 +214,6 @@ fun AddMedicineScreen(
 @Composable
 fun AddMedicineScreenPreview() {
     RemediTheme {
-        AddMedicineScreen {
-
-        }
+        AddMedicineScreen (onNavToAddAnnouncementScreen = {}, onBack = {})
     }
 }
